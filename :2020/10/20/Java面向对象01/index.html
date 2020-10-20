@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020 | Blog</title>
+  <title>Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="跌倒又爬起，山岭静悄悄">
-<meta property="og:type" content="website">
+  <meta name="description" content="title:Java-继承-修饰符-多态date:2020-10-20 23:18:40tags:Java学习  Java复习继承前几天猛的花了一个上午把 Java 的基本语法学完后，今天回过头发现又有些东西忘掉了，于是又捡起来重新学一下，但是基本的还是记得住的，毕竟语言大部分都是通的。于是选择从继承这边开始学起。 继承的基本概念还就是继承，">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Blog">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+<meta property="og:url" content="http://example.com/:2020/10/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="跌倒又爬起，山岭静悄悄">
+<meta property="og:description" content="title:Java-继承-修饰符-多态date:2020-10-20 23:18:40tags:Java学习  Java复习继承前几天猛的花了一个上午把 Java 的基本语法学完后，今天回过头发现又有些东西忘掉了，于是又捡起来重新学一下，但是基本的还是记得住的，毕竟语言大部分都是通的。于是选择从继承这边开始学起。 继承的基本概念还就是继承，">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-20T15:18:40.760Z">
+<meta property="article:modified_time" content="2020-10-20T16:51:46.553Z">
 <meta property="article:author" content="yuhao">
 <meta name="twitter:card" content="summary">
   
@@ -152,81 +154,171 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java面向对象01" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:Java-继承-修饰符-多态<br>date:2020-10-20 23:18:40<br>tags:Java学习</p>
+<hr>
+<h1 id="Java复习"><a href="#Java复习" class="headerlink" title="Java复习"></a>Java复习</h1><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>前几天猛的花了一个上午把 Java 的基本语法学完后，今天回过头发现又有些东西忘掉了，于是又捡起来重新学一下，但是基本的还是记得住的，毕竟语言大部分都是通的。于是选择从继承这边开始学起。</p>
+<p>继承的基本概念还就是继承，<a id="more"></a>和其他的语言没有什么不一样的，需要注意点的地方有几个：</p>
+<ul>
+<li>继承中变量的调用顺序。 首先调用mian方法时，会去寻找调用变量这个方法中的成员变量，如果找不到，就会找这个类中的变量，如果还没有，就会找父类中的变量</li>
+<li>super关键字， 我记得当时在学python的时候也学到了这个关键字，但是一直没怎么用过，现在也忘的差不多了。Java里面的super关键字就是一个指向父类方法的关键字。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>() <span class="comment">// 调用父类的构造方法</span></span><br><span class="line"><span class="keyword">super</span>.方法() <span class="comment">// 调用父类的成员方法</span></span><br><span class="line"><span class="keyword">super</span>.变量 <span class="comment">// 调用父类的成员变量</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有一个经常被忽略的一点是，当我们用到一个子类去继承一个父类的时候，我们的子类所有的构造方法都会访问到父类的无参构造方法。 这是因为我们去初始化一个子类对象的时候，都会先初始化父类。所以每一个子类构造方法第一条语句默认 super( )无参构造方法，当然，也可以自己写一个带参构造方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Cat</span><span class="params">()</span> extends Animals</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(); <span class="comment">// 默认没有这一行，但是会执行</span></span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>方法重写，（@override）这就是父类有一个方法，但是子类觉得这个方法不好，就重新写了，这只要子类的方法名和父类的方法名一样就可以重写了，最好在方法上面加一行 @override</li>
+<li>Java 中继承只有单继承，没有像python一样的多继承。</li>
+</ul>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>相信很多Java的初学者会对 public static private 等在函数名前的名词感到困惑，我也是一样，开始懵得一比，直到学到这里就慢慢理解了</p>
+<p>修饰符一共分为两种，一种是状态修饰符，一种是权限修饰符</p>
+<p>权限修饰符：（private 默认 protect public）</p>
+<ul>
+<li>Private  私有 只能在当前的类中访问</li>
+<li>默认 范围比private大一点，可以在同一个包内使用</li>
+<li>protect 范围比默认大，可以在不同的包，但是必须有继承关系才可以访问</li>
+<li>public 范围最大，无敌，都可以</li>
+</ul>
+<p>状态修饰符 ：（final static）</p>
+<ul>
+<li>final 和JavaScript 中的const 差不多，就是一旦写了就能再改了的意思</li>
+<li>static 静态 这个有两种情况，如果在类中使用static 修饰成员变量，那么这个类所有的对象都会共享这个成员变量的值。如果修饰成员方法，那么只有静态的成员方法才能访问，总之就是静态的只能被静态的访问。</li>
+</ul>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态 – 就是一个对象，在不同的时刻表现出不同的形态。</p>
+<p>举个栗子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Animal a = <span class="keyword">new</span> Cat()</span><br></pre></td></tr></table></figure>
+
+<p>但是这样也是有前提的，</p>
+<ol>
+<li>要有继承/实现关系</li>
+<li>要有方法的重写</li>
+<li>这是父类引用指向子类对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Animal a = <span class="keyword">new</span> Cat();</span><br><span class="line">  <span class="comment">// 我们完成多态的生成，这时候如果我们假设Cat类中有一个eat方法，而Animal中没有，这时候会怎么样呢？</span></span><br><span class="line">  <span class="comment">// 这时候就会出问题，因为多态的实现中，当我们调用子类的一个成员方法时，首先他会看父类的方法，当没有的时候就会报错，这时候就必须要父类有这个方法，子类也要调用才可以</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了调用方法会出问题，当我们调用变量的时候，如果父类中没有这个成员变量也会报错，因为在调用的时候程序会先去父类中找，找不到自然而然就报错了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>今天报名参加了ACM俱乐部，算法比赛大部分又是由c/c++写的，我打算这周猛复习完Java，再把c++的基础语法学完去刷题，争取能趁早进入ACM正选队去打比赛。这周的项目进度看来又要搁置了。</p>
+<p>诶现在已经是凌晨12点四十了，也该睡觉了，不然明天英语课去睡一下：）</p>
+<p>日拱一卒，功不唐捐 !</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/:2020/10/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101/" class="archive-article-date">
-  	<time datetime="2020-10-20T15:18:40.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/:2020/10/20/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/:2020/10/18/20-10-18%E5%91%A8%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-10-18T07:23:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/:2020/10/18/20-10-18%E5%91%A8%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">20.10.18周总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/:2020/10/18/20-10-18%E5%91%A8%E6%80%BB%E7%BB%93/">20.10.18周总结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -249,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
