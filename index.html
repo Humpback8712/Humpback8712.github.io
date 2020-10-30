@@ -154,6 +154,353 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-c-基础速成" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/:2020/10/29/c-%E5%9F%BA%E7%A1%80%E9%80%9F%E6%88%90/">c++基础速成</a>
+    </h1>
+  
+
+        
+        <a href="/:2020/10/29/c-%E5%9F%BA%E7%A1%80%E9%80%9F%E6%88%90/" class="archive-article-date">
+  	<time datetime="2020-10-29T06:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="c-语言基础"><a href="#c-语言基础" class="headerlink" title="c++语言基础"></a>c++语言基础</h1><p>前几天报了学校的ACM俱乐部，进一步了解后发现大家打ACM主要还是用 c++，所以我又单独抽出了三四天时间把c++的基础语法学完了，在这里总结一下，也算是巩固一下记忆了。</p>
+<h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h2><p>c++ 和 Java 一样，在定义一个变量的时候，要先定义这个变量的数据类型，我的理解是在定义变量的时候说明类型即向计算机申请对应的内存空间。</p>
+<h3 id="1-1-整型"><a href="#1-1-整型" class="headerlink" title="1.1 整型"></a>1.1 整型</h3><p>C++中能够表示整型的类型有以下几种方式，<strong>区别在于所占内存空间不同</strong>：</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据类型</strong></th>
+<th><strong>占用空间</strong></th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>short(短整型)</td>
+<td>2字节</td>
+<td>(-2^15 ~ 2^15-1)</td>
+</tr>
+<tr>
+<td>int(整型)</td>
+<td>4字节</td>
+<td>(-2^31 ~ 2^31-1)</td>
+</tr>
+<tr>
+<td>long(长整形)</td>
+<td>Windows为4字节，Linux为4字节(32位)，8字节(64位)</td>
+<td>(-2^31 ~ 2^31-1)</td>
+</tr>
+<tr>
+<td>long long(长长整形)</td>
+<td>8字节</td>
+<td>(-2^63 ~ 2^63-1)</td>
+</tr>
+</tbody></table>
+<p>在定义的时候：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> 变量名; <span class="keyword">int</span> 变量名； ...</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-小数类型"><a href="#1-2-小数类型" class="headerlink" title="1.2 小数类型"></a>1.2 小数类型</h3><p>小数类型就是浮点类型</p>
+<p>浮点类型有两种，区别就是占用空间不一样</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据类型</strong></th>
+<th><strong>占用空间</strong></th>
+<th><strong>有效数字范围</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>7位有效数字</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>15～16位有效数字</td>
+</tr>
+</tbody></table>
+<p>在定义的时候：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> 变量名； <span class="keyword">double</span> 变量名；</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-字符型"><a href="#1-3-字符型" class="headerlink" title="1.3 字符型"></a>1.3 字符型</h3><p>字符类型和字符串类型差不多，我就在这里一起写了</p>
+<ul>
+<li>字符类型  <strong>char 变量名 = ‘a’;</strong></li>
+<li>这里的字符就只能放一个字母或数字啥的</li>
+<li>字符类型变量不是在内存里开辟空间将字符放在内存中，而是将字符的ASCII码放在存储单元中</li>
+</ul>
+<p>字符串类型有两种风格</p>
+<ol>
+<li>字符列表风格 char 变量名[ ] = “ “;</li>
+<li>字符串风格 string 变量名 = “ “;</li>
+</ol>
+<blockquote>
+<p>这里要注意当我们用字符串风格的时候要引入string头文件，就像我们在写Java的时候，如果定义一个String 类型的字符串也要去导一个包</p>
+</blockquote>
+<h3 id="1-4-布尔类型"><a href="#1-4-布尔类型" class="headerlink" title="1.4 布尔类型"></a>1.4 布尔类型</h3><p>布尔类型就没有什么好说的了，就是 <strong>bool 变量名 = True</strong></p>
+<p>因为布尔类型对应的就是0和1，所以布尔类型的数据占用的内存大小就是一个字节</p>
+<h3 id="1-5-数据的输入"><a href="#1-5-数据的输入" class="headerlink" title="1.5 数据的输入"></a>1.5 数据的输入</h3><p>数据的输入我们用的是cin</p>
+<p>我们要注意在输入数据之前要先定义一下输入数据的数据类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; a; </span><br><span class="line">  <span class="keyword">bool</span> b;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; b;</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-运算符"><a href="#2-运算符" class="headerlink" title="2. 运算符"></a>2. 运算符</h2><h3 id="2-1-算数运算符"><a href="#2-1-算数运算符" class="headerlink" title="2.1 算数运算符"></a>2.1 算数运算符</h3><p>这个跟其他语言差不多，没有什么好写的</p>
+<p>就是加减乘除</p>
+<h3 id="2-2-赋值运算符"><a href="#2-2-赋值运算符" class="headerlink" title="2.2 赋值运算符"></a>2.2 赋值运算符</h3><p>这个跟其他语言也差不多，也没什么好写的</p>
+<p>就是加减乘除后面加一个等于号</p>
+<h3 id="2-3-比较运算符"><a href="#2-3-比较运算符" class="headerlink" title="2.3 比较运算符"></a>2.3 比较运算符</h3><p>这个跟其他语言也差不多，也没什么好写的</p>
+<p>就是是否啥的</p>
+<h3 id="2-4-逻辑运算符"><a href="#2-4-逻辑运算符" class="headerlink" title="2.4 逻辑运算符"></a>2.4 逻辑运算符</h3><table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>术语</strong></th>
+<th><strong>示例</strong></th>
+<th><strong>结果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>!</td>
+<td>非</td>
+<td>!a</td>
+<td>如果a为假，则!a为真；  如果a为真，则!a为假。</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>与</td>
+<td>a &amp;&amp; b</td>
+<td>如果a和b都为真，则结果为真，否则为假。</td>
+</tr>
+<tr>
+<td>||</td>
+<td>或</td>
+<td>a || b</td>
+<td>如果a和b有一个为真，则结果为真，二者都为假时，结果为假。</td>
+</tr>
+</tbody></table>
+<p>我记得在写 JS 的时候，就只有一个 ！ 有点用，就是取否，剩下的好用是好用，但是看起来还是没有or and 来的直接。</p>
+<h2 id="3-程序流程结构"><a href="#3-程序流程结构" class="headerlink" title="3. 程序流程结构"></a>3. 程序流程结构</h2><p>程序结构也跟其他语言没差，分三种</p>
+<ul>
+<li>顺序结构</li>
+<li>选择结构</li>
+<li>循环结构</li>
+</ul>
+<p>顺序结构就没啥好说的，从上读到下就是顺序结构</p>
+<h3 id="3-1-选择结构"><a href="#3-1-选择结构" class="headerlink" title="3.1 选择结构"></a>3.1 选择结构</h3><ol>
+<li><p>if 选择</p>
+<p>这个 if 选择和 JS 的选择很像</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件<span class="number">1</span>)&#123;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (条件<span class="number">2</span>) &#123;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三目运算符</p>
+<p><strong>语法：</strong><code>表达式1 ? 表达式2 ：表达式3</code></p>
+<ul>
+<li><p>如果表达式1的值为真，执行表达式2，并返回表达式2的结果；</p>
+</li>
+<li><p>如果表达式1的值为假，执行表达式3，并返回表达式3的结果；</p>
+</li>
+</ul>
+</li>
+<li><p>switch 选择</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> 结果<span class="number">1</span>：执行语句;<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> 结果<span class="number">2</span>：执行语句;<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">	<span class="keyword">default</span>:执行语句;<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Switch  语句在每一个case写完后要加上一个break ，不然程序会顺序执行，把剩下的条件语句全执行一遍。这个跟 JS 的switch也是一样的</p>
+</li>
+</ol>
+<h3 id="3-2-循环结构"><a href="#3-2-循环结构" class="headerlink" title="3.2 循环结构"></a>3.2 循环结构</h3><p>循环结构也就分为三个</p>
+<ul>
+<li>for 循环</li>
+<li>while 循环</li>
+<li>do while 循环</li>
+</ul>
+<ol>
+<li><p>for 循环</p>
+<p>for 循环和 JS 的for循环很像</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">	<span class="comment">// 代码块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>while 循环</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(num&lt;<span class="number">10</span>)&#123;</span><br><span class="line">  <span class="comment">// 代码块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>do while 循环</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	<span class="comment">// 代码块</span></span><br><span class="line">&#125; <span class="keyword">while</span>(num&lt;<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Do while 就是先执行代码块，然后再去看是否满足条件</p>
+</li>
+</ol>
+<h3 id="3-3-跳转语句"><a href="#3-3-跳转语句" class="headerlink" title="3.3 跳转语句"></a>3.3 跳转语句</h3><ol>
+<li><p>break</p>
+<p>这个没什么好说的，就是跳出当前循环</p>
+</li>
+<li><p>continue</p>
+<p>这个也没什么好说的，就是跳出当前语句中未执行的部分，直接进行下一次的循环</p>
+</li>
+<li><p>goto</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;1&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">goto</span> FLAG;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;2&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;3&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;4&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	FLAG:</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;5&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>直接 goto 被标记的代码部分，但是这个写多了会挺混乱的，所以还是要避免经常用这个goto</p>
+<h2 id="4-数组"><a href="#4-数组" class="headerlink" title="4. 数组"></a>4. 数组</h2><h3 id="4-1-一维数组"><a href="#4-1-一维数组" class="headerlink" title="4.1 一维数组"></a>4.1 一维数组</h3><p>一维数组的三种定义方式</p>
+<ol>
+<li>数据类型 数组名 [ 数组长度 ];</li>
+<li>数据类型 数组名 [ 数组长度 ] = { 值1， 值2 , … }; // 如果值的个数和数组长度不匹配，剩下的就变成0</li>
+<li>数据类型 数组名 [ ]  =  { 值1， 值2 , … };</li>
+</ol>
+<h3 id="4-2-数组名"><a href="#4-2-数组名" class="headerlink" title="4.2 数组名"></a>4.2 数组名</h3><ol>
+<li>可以统计该数组在内存中的大小</li>
+<li>可以得到该数组在内存中的首地址</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; <span class="comment">// 定义一个数组</span></span><br><span class="line"><span class="keyword">sizeof</span>(arr) <span class="comment">// 返回数组的内存大小</span></span><br><span class="line"><span class="keyword">sizeof</span>(arr[<span class="number">0</span>]) <span class="comment">// 返回数组第一个元素的内存大小</span></span><br><span class="line"><span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]) <span class="comment">// 返回数组长度</span></span><br><span class="line">(<span class="keyword">int</span>)arr <span class="comment">// 返回数组的首地址</span></span><br><span class="line">(<span class="keyword">int</span>)&amp;arr[<span class="number">0</span>] <span class="comment">// 返回数组第一个元素的地址</span></span><br><span class="line">(<span class="keyword">int</span>)&amp;arr[<span class="number">1</span>] <span class="comment">// 返回数组第二个元素的地址  </span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>数组名是常量，不能赋值</p>
+</blockquote>
+<h3 id="4-3-二维数组"><a href="#4-3-二维数组" class="headerlink" title="4.3 二维数组"></a>4.3 二维数组</h3><p>二维数组可以理解成是一个矩阵</p>
+<p>定义二维数组的方式有四种，且和定义一维数组的语法很像</p>
+<ol>
+<li><code>数据类型 数组名[ 行数 ] [列数]； </code></li>
+<li><code>数据类型  数组名[ 行数 ][ 列数 ] = &#123; &#123;数据1，数据2 &#125; ，&#123;数据3，数据4 &#125; &#125;;</code></li>
+<li><code>数据类型  数组名[ 行数 ][ 列数 ] = &#123; 数据1，数据2，数据3，数据4&#125;;</code></li>
+<li><code> 数据类型  数组名[  ][ 列数 ] = &#123; 数据1，数据2，数据3，数据4&#125;;</code></li>
+</ol>
+<h3 id="4-4-二维数组名"><a href="#4-4-二维数组名" class="headerlink" title="4.4 二维数组名"></a>4.4 二维数组名</h3><p>二维数组名和一维数组名的用法差不多，都是可以通过数组名来获取内存空间大小，用 <code> sizeof</code> 关键字来获取数组长度。</p>
+<h2 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h2><p>c++ 的函数和 java 的函数很像，都是需要注明返回值的类型，如果没有返回值的函数，返回值类型处就要写上<code> void</code>, 但是又没有 Java 的权限修饰符，所以也挺好理解的</p>
+<h3 id="5-1-函数的定义"><a href="#5-1-函数的定义" class="headerlink" title="5.1 函数的定义"></a>5.1 函数的定义</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">functionName</span><span class="params">( arg, *args)</span></span>&#123;</span><br><span class="line">  ....</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function2</span><span class="params">()</span></span>&#123;</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-函数的调用"><a href="#5-2-函数的调用" class="headerlink" title="5.2 函数的调用"></a>5.2 函数的调用</h3><p>当函数调用的时候，分为两种情况，第一种情况就是有返回值的，当我们的函数有返回值的时候，我们就要先定义一下返回值的类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x; <span class="comment">// 先声明变量类型</span></span><br><span class="line">x = functionName(test); <span class="comment">// 接收函数返回值</span></span><br><span class="line"><span class="keyword">int</span> y = functionName(test1) <span class="comment">// 声明和接收放在一行上写</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-指针"><a href="#6-指针" class="headerlink" title="6. 指针"></a>6. 指针</h2><p>之前学习c++之前，经常听见学长学姐说指针有多么难，但是我学完后发现不过如此，可能只是我没学深吧</p>
+<p>在我的理解里，指针不过就是一个存储另一个变量地址的变量</p>
+<p><strong>指针的作用：</strong> 可以通过指针间接访问内存</p>
+<h3 id="6-1-指针的定义"><a href="#6-1-指针的定义" class="headerlink" title="6.1 指针的定义"></a>6.1 指针的定义</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>; <span class="comment">// 先定义一个变量 a</span></span><br><span class="line"><span class="keyword">int</span> * p; <span class="comment">// 定义整型类型指针</span></span><br><span class="line">p = &amp;a; <span class="comment">// 将a的地址取出放在指针p上</span></span><br><span class="line">*p <span class="comment">// 解引用，指向地址中对应的数据</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-指针所占内存空间"><a href="#6-2-指针所占内存空间" class="headerlink" title="6.2 指针所占内存空间"></a>6.2 指针所占内存空间</h3><p>所有指针类型在32位操作系统下是4个字节，我的Mac应该是64位的，所以在我的Mac上指针的大小是8个字节</p>
+<h3 id="6-3-空指针"><a href="#6-3-空指针" class="headerlink" title="6.3 空指针"></a>6.3 空指针</h3><p>当我们定义完一个指针并且让他等于Null时，这个指针就是一个空指针，这个指针会指向0号内存，而我们的电脑中0～255号内存是系统占用内存，所以我们的程序没有权限访问，当我们进行访问的时候，语法上来讲并不会出现错误，但是程序运行的时候还是会报权限问题的错误，就是我们的程序没有权限去访问电脑的系统内存。</p>
+<p>当然，空指针并不是没有用的，我们可以用空指针来初始化我们的指针，然后在需要用到的时候对我们的空指针进行赋值操作就可以了。</p>
+<h3 id="6-4-野指针"><a href="#6-4-野指针" class="headerlink" title="6.4 野指针"></a>6.4 野指针</h3><p>和空指针很像，野指针也是指向一块我们无法访问的空间，当我们定义完一个指针后，如果将它随意赋值，给他的地址并不是我们所申请的地址，程序就会报权限错误。这个很好理解，就像我们去住酒店，走进去随便打开一扇门，这个门肯定是开不了的，这就是权限除了问题。</p>
+<p>空指针和野指针指向的内存地址都不是我们自己申请的内存地址，所以访问的时候一定会报权限错误。</p>
+<h3 id="6-5-const-修饰指针"><a href="#6-5-const-修饰指针" class="headerlink" title="6.5 const 修饰指针"></a>6.5 const 修饰指针</h3><p>const 修饰变量就是将一个变量变为常量，同理，如果用 const 来修饰指针，这个指针也会相应进行变化</p>
+<ol>
+<li>const修饰指针   — 常量指针</li>
+<li>const修饰常量   — 指针常量</li>
+<li>const即修饰指针，又修饰常量</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p1 = &amp;a;  <span class="comment">// const 修饰指针 -&gt; 指向可以变，但是值不能变</span></span><br><span class="line">p1 = &amp;b; <span class="comment">//正确</span></span><br><span class="line"><span class="comment">//*p1 = 100;  报错</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p2 = &amp;b; <span class="comment">// const 修饰变量 -&gt; 值可以变，但是指向不能变</span></span><br><span class="line"><span class="comment">// p2 = &amp;c;  报错</span></span><br><span class="line">*p2 = <span class="number">2000</span>; <span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;d; <span class="comment">// 固定死了，啥都不能变</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-6-指针和数组"><a href="#6-6-指针和数组" class="headerlink" title="6.6 指针和数组"></a>6.6 指针和数组</h3><p>可以利用指针来访问数组中的元素</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> * p = arr;  <span class="comment">//指向数组的指针</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//利用指针遍历数组</span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">		p++; <span class="comment">// int类型数组中一个元素有四个字节，而指针在大部分机器下也占四个字节，所以指针加一对应这地址数往后加了四个字节，自然就会对应到下一个元素了</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-7-指针和函数"><a href="#6-7-指针和函数" class="headerlink" title="6.7 指针和函数"></a>6.7 指针和函数</h3><p>当我们在定义函数的时候将参数换成指针，就是传递一个地址过去，这样子在函数体内就可以对地址中的变量进行修改</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap2</span><span class="params">(<span class="keyword">int</span> * p1, <span class="keyword">int</span> *p2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> temp = *p1;</span><br><span class="line">	*p1 = *p2;</span><br><span class="line">	*p2 = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  swap2(&amp;a, &amp;b); <span class="comment">// 传递两个变量的地址过去，并将地址赋值给 p1 p2 这两个指针参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-结构体"><a href="#7-结构体" class="headerlink" title="7.结构体"></a>7.结构体</h2><p>c++中的结构体和JS，JAVA中的对象差不多</p>
+<p>结构体属于用户== 自定义的数据类型 ==，允许用户存储不同的数据类型</p>
+<h3 id="7-1-结构体的定义"><a href="#7-1-结构体的定义" class="headerlink" title="7.1 结构体的定义"></a>7.1 结构体的定义</h3><p><strong>语法：</strong><code>struct 结构体名 &#123; 结构体成员列表 &#125;；</code></p>
+<ul>
+<li>struct 结构体名 变量名</li>
+<li>struct 结构体名 变量名 = { 成员1值 ， 成员2值…}</li>
+<li>定义结构体时顺便创建变量</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">// 成员列表</span></span><br><span class="line">  <span class="built_in">string</span> name;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">bool</span> gender;</span><br><span class="line">  <span class="keyword">int</span> score</span><br><span class="line">&#125;zhangsan; <span class="comment">// 结构体定义完顺便创建变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="comment">// 这里的创建结构体变量的语法和声明变量很像</span></span><br><span class="line">  <span class="comment">// 第一种方法</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">lisi</span>;</span> <span class="comment">// struct 关键字可以省略</span></span><br><span class="line">  <span class="comment">// 创建完了变量接下来就要进行赋值操作</span></span><br><span class="line">  lisi.name = <span class="string">&quot;lisi&quot;</span>;</span><br><span class="line">  lisi.age = <span class="number">18</span>;</span><br><span class="line">  lisi.gender = False;</span><br><span class="line">  lisi.score = <span class="number">59</span>;</span><br><span class="line">  <span class="comment">// 这是第一种创建结构体变量的语法，这起始就有一种对象的雏形了</span></span><br><span class="line">  <span class="comment">// 第二种方法</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">lisi</span> = &#123;</span><span class="string">&quot;lisi&quot;</span>, <span class="number">19</span>, False, <span class="number">59</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-结构体数组"><a href="#7-2-结构体数组" class="headerlink" title="7.2 结构体数组"></a>7.2 结构体数组</h3><p>这个也很好理解，就是将相同的结构体变量放在一个数组内，这样访问的时候也方便</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//结构体定义</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="comment">//成员列表</span></span><br><span class="line">	<span class="built_in">string</span> name;  <span class="comment">//姓名</span></span><br><span class="line">	<span class="keyword">int</span> age;      <span class="comment">//年龄</span></span><br><span class="line">	<span class="keyword">int</span> score;    <span class="comment">//分数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//结构体数组</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">arr</span>[3] =</span></span><br><span class="line"><span class="class">	&#123;</span></span><br><span class="line">		&#123;<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">80</span> &#125;,</span><br><span class="line">		&#123;<span class="string">&quot;李四&quot;</span>,<span class="number">19</span>,<span class="number">60</span> &#125;,</span><br><span class="line">		&#123;<span class="string">&quot;王五&quot;</span>,<span class="number">20</span>,<span class="number">70</span> &#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-3-结构体指针"><a href="#7-3-结构体指针" class="headerlink" title="7.3 结构体指针"></a>7.3 结构体指针</h3><p>我们在上面用的是变量名来访问结构体的成员变量，我们还可以用指针来访问。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stu</span> = &#123;</span> <span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>, &#125;; <span class="comment">// 先声明张三变量</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> * <span class="title">p</span> = &amp;<span class="title">stu</span>;</span> <span class="comment">// 获取张三的内存地址</span></span><br><span class="line">p-&gt;score = <span class="number">80</span>; <span class="comment">// 通过-&gt; 可以访问成员变量</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-4-结构体嵌套结构体"><a href="#7-4-结构体嵌套结构体" class="headerlink" title="7.4 结构体嵌套结构体"></a>7.4 结构体嵌套结构体</h3><p>比如我们有一个老师结构体，里面可以再嵌套一个学生结构体</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//学生结构体定义</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="comment">//成员列表</span></span><br><span class="line">	<span class="built_in">string</span> name;  <span class="comment">//姓名</span></span><br><span class="line">	<span class="keyword">int</span> age;      <span class="comment">//年龄</span></span><br><span class="line">	<span class="keyword">int</span> score;    <span class="comment">//分数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//教师结构体定义</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">teacher</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//成员列表</span></span><br><span class="line">	<span class="keyword">int</span> id; <span class="comment">//职工编号</span></span><br><span class="line">	<span class="built_in">string</span> name;  <span class="comment">//教师姓名</span></span><br><span class="line">	<span class="keyword">int</span> age;   <span class="comment">//教师年龄</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stu</span>;</span> <span class="comment">//子结构体 学生</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-5-结构体做函数参数"><a href="#7-5-结构体做函数参数" class="headerlink" title="7.5 结构体做函数参数"></a>7.5 结构体做函数参数</h3><p>和普通的变量一样，在我们用函数的时候，可以往里面穿变量参数，也可以穿入地址参数，当我们传入的是变量的参数时，函数内部时并不会用到我们传入参数的地址，而是会在内存中开辟另一块地址，将我们穿入的参数复制到那一块地址中，在调用函数的一开始开辟地址，在函数结束的时候销毁，我的理解中就是一个进栈和出栈的动作，所以我们在函数中对参数的修改并不会影响到主函数中实际的参数，当我们想要在函数内修改主函数中的变量的时候，我们就要用到地址传递了，当我们穿入地址了，我们是通过地址的指向去修改参数的值，所以这样就可以成功修改。这两点其实理解起来也是挺好理解的。</p>
+<p>当我们用地址传递时，如果害怕主函数的变量被修改，还可以用 <strong>const</strong> 来修饰我们的地址参数，也就是指针。</p>
+<blockquote>
+<p>总结：如果不想修改主函数中的数据，用值传递，反之用地址传递</p>
+</blockquote>
+<h2 id="8-结束"><a href="#8-结束" class="headerlink" title="8. 结束"></a>8. 结束</h2><p>到这里c++的基础部分就差不多结束了，后面的对象部分我也不打算学了，毕竟学习c++只是为了去学习数据结构与算法，看看能不能参加一波ACM的比赛，花了几个小时写完这篇文章，觉得c++的基础知识又巩固了一遍，可以放心去刷题了。</p>
+<p>日拱一卒，功不唐捐</p>
+<p>每天进步一点点！ Peace！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/:2020/10/29/c-%E5%9F%BA%E7%A1%80%E9%80%9F%E6%88%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java面向对象01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -398,6 +745,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">项目开发</a>
